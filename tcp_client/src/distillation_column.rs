@@ -1,4 +1,4 @@
-// heat_exchanger.rs
+// distillation_column.rs
 
 use avro_rs::{to_avro_datum, to_value, Schema};
 use serde::{Deserialize, Serialize};
@@ -9,53 +9,51 @@ use crate::producer::UnitDataProducer;
 use crate::schema_loader::get_schema;
 
 #[derive(Debug, Serialize, Deserialize)]
-pub struct HeatExchangerData {
+pub struct DistillationColumnData {
     uuid: String,
     timestamp: i64,
-    tc_in: f32,
-    tc_out: f32,
-    th_in: f32,
-    th_out: f32,
-    flow_rate: f32,
-    pressure_drop: f32,
+    temperature: f32,
+    pressure: f32,
+    reflux_ratio: f32,
+    bottom_flow_rate: f32,
+    top_flow_rate: f32,
 }
 
-pub struct HeatExchanger {
+pub struct DistillationColumn {
     uuid: String,
     producer: UnitDataProducer,
     schema: Schema,
 }
 
-impl HeatExchanger {
+impl DistillationColumn {
     pub fn new() -> Self {
         let uuid = Uuid::new_v4().to_string();
         let schema = get_schema(
-            "heat_exchanger",
-            "schemas/heat_exchanger.avsc",
+            "distillation_column",
+            "schemas/distillation_column.avsc",
         );
         let producer = UnitDataProducer::new();
 
-        HeatExchanger {
+        DistillationColumn {
             uuid,
             producer,
             schema,
         }
     }
 
-    fn generate_data(&self) -> HeatExchangerData {
+    fn generate_data(&self) -> DistillationColumnData {
         let now = SystemTime::now()
             .duration_since(UNIX_EPOCH)
             .unwrap()
             .as_millis() as i64;
-        HeatExchangerData {
+        DistillationColumnData {
             uuid: self.uuid.clone(),
             timestamp: now,
-            tc_in: rand::random::<f32>() * 100.0,
-            tc_out: rand::random::<f32>() * 100.0,
-            th_in: rand::random::<f32>() * 100.0,
-            th_out: rand::random::<f32>() * 100.0,
-            flow_rate: rand::random::<f32>() * 10.0,
-            pressure_drop: rand::random::<f32>() * 5.0,
+            temperature: rand::random::<f32>() * 200.0,
+            pressure: rand::random::<f32>() * 10.0,
+            reflux_ratio: rand::random::<f32>(),
+            bottom_flow_rate: rand::random::<f32>() * 100.0,
+            top_flow_rate: rand::random::<f32>() * 100.0,
         }
     }
 
