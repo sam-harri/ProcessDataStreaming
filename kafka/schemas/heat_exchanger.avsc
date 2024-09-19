@@ -1,14 +1,15 @@
-{
-  "type": "record",
-  "name": "HeatExchanger",
-  "namespace": "com.process.simulator",
-  "fields": [
-    {"name": "timestamp", "type": "long", "doc": "Unix timestamp in milliseconds"},
-    {"name": "tc_in", "type": "float", "doc": "Coolant temperature in (°C)"},
-    {"name": "tc_out", "type": "float", "doc": "Coolant temperature out (°C)"},
-    {"name": "th_in", "type": "float", "doc": "Hot fluid temperature in (°C)"},
-    {"name": "th_out", "type": "float", "doc": "Hot fluid temperature out (°C)"},
-    {"name": "flow_rate", "type": "float", "doc": "Flow rate in m^3/h"},
-    {"name": "pressure_drop", "type": "float", "doc": "Pressure drop in bar"}
-  ]
-}
+    {
+      "type": "record",
+      "name": "HeatExchangerData",
+      "namespace": "com.process.simulator",
+      "fields": [
+        {"name": "uuid", "type": "string", "doc": "Unique identifier for the unit"},
+        {"name": "timestamp", "type": "long", "doc": "Unix timestamp in milliseconds"},
+        {"name": "tc_in", "type": "float", "doc": "Coolant temperature in (°C)"},
+        {"name": "tc_out", "type": "float", "doc": "Coolant temperature out (°C)"},
+        {"name": "th_in", "type": "float", "doc": "Hot fluid temperature in (°C)"},
+        {"name": "th_out", "type": "float", "doc": "Hot fluid temperature out (°C)"},
+        {"name": "flow_rate", "type": "float", "doc": "Flow rate in m^3/h"},
+        {"name": "pressure_drop", "type": "float", "doc": "Pressure drop in bar"}
+      ]
+    }
