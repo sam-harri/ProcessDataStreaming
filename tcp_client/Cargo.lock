@@ -724,6 +724,7 @@ name = "tcp_client"
 version = "0.1.0"
 dependencies = [
  "avro-rs",
+ "once_cell",
  "rand 0.8.5",
  "rdkafka",
  "serde",
