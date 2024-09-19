@@ -35,6 +35,7 @@ def spark_init() -> None:
     # Project each field in the struct to its own column
     df = df.select(
         col("key"),
+        col("hx.uuid").alias("uuid"),
         col("hx.timestamp").alias("timestamp"),
         col("hx.tc_in").alias("tc_in"),
         col("hx.tc_out").alias("tc_out"),
@@ -43,8 +44,6 @@ def spark_init() -> None:
         col("hx.flow_rate").alias("flow_rate"),
         col("hx.pressure_drop").alias("pressure_drop")
     )
-
-    # df = df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)", "topic", "partition", "offset", "timestamp", "timestampType", "headers")
         
     query: StreamingQuery = (df
         .writeStream
