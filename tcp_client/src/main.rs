@@ -1,18 +1,16 @@
-use producer::{create, produce_heat_exchanger_data};
+use heat_exchanger::HeatExchanger;
 use tokio::task;
 
 mod producer;
-mod consumer;
 mod heat_exchanger;
-
 
 #[tokio::main]
 async fn main() {
-
-    let producer = create();
+    let heat_exchanger = HeatExchanger::new();
+    let topic = "test-topic";
 
     let producer_handle = task::spawn(async move {
-        produce_heat_exchanger_data(&producer, "test-topic").await;
+        heat_exchanger.produce_data(topic).await;
     });
 
     producer_handle.await.unwrap();
