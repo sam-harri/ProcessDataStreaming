@@ -1,0 +1,14 @@
+{
+  "type": "record",
+  "name": "DistillationColumnData",
+  "namespace": "com.process.simulator",
+  "fields": [
+    {"name": "uuid","type": "string","doc": "Unique identifier for the unit"`},
+    {"name": "timestamp", "type": "long", "doc": "Unix timestamp in milliseconds"`},
+    {"name": "temperature", "type": "float", "doc": "Column temperature in degrees Celsius"`},
+    {"name": "pressure", "type": "float", "doc": "Column pressure in bar"`},
+    {"name": "reflux_ratio", "type": "float", "doc": "Reflux ratio (dimensionless)"`},
+    {"name": "bottom_flow_rate", "type": "float", "doc": "Bottom product flow rate in m^3/h"`},
+    {"name": "top_flow_rate", "type": "float", "doc": "Top product flow rate in m^3/h"`}
+  ]
+}
