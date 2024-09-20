@@ -31,7 +31,7 @@ impl HeatExchanger {
         let uuid = Uuid::new_v4().to_string();
         let schema = get_schema(
             "heat_exchanger",
-            "schemas/heat_exchanger.avsc",
+            "../schemas/heat_exchanger.avsc",
         );
         let producer = UnitDataProducer::new();
 

@@ -30,7 +30,7 @@ impl DistillationColumn {
         let uuid = Uuid::new_v4().to_string();
         let schema = get_schema(
             "distillation_column",
-            "schemas/distillation_column.avsc",
+            "../schemas/distillation_column.avsc",
         );
         let producer = UnitDataProducer::new();
 

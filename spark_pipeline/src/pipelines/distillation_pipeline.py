@@ -5,7 +5,7 @@ from pyspark.sql.avro.functions import from_avro
 
 def distillation_pipeline(spark: SparkSession) -> DataFrame:
     # Read schema
-    distillation_schema = open("schemas/distillation_column.avsc", "r").read()
+    distillation_schema = open("../schemas/distillation_column.avsc", "r").read()
 
     # Create DataFrame
     df_distillation = (spark

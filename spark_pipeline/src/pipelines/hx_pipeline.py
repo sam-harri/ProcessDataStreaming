@@ -5,7 +5,7 @@ from pyspark.sql.avro.functions import from_avro
 
 def hx_pipeline(spark: SparkSession) -> DataFrame:
     # Read schema
-    hx_schema = open("schemas/heat_exchanger.avsc", "r").read()
+    hx_schema = open("../schemas/heat_exchanger.avsc", "r").read()
 
     # Create DataFrame
     df_hx = (spark
