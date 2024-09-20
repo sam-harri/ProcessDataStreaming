@@ -1,5 +1,3 @@
-// schema_loader.rs
-
 use avro_rs::Schema;
 use once_cell::sync::Lazy;
 use std::collections::HashMap;
